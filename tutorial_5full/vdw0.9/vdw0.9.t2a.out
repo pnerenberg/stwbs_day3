@@ -1,7 +1,5 @@
- frcfieldfile = 
- ./vdw0.9.prm                                                                   
-  
- found a-axis =    30.0000000000000     
+ frcfieldfile = ./vdw0.9.prm                                                                    
+ found a-axis =    30.000000000000000     
  num_xyz_atoms =         2006
  numres =          660
  num_atoms =         2006
