@@ -7,7 +7,7 @@ export TINKERHOME=/work/02555/psn/tinker
 export PATH=$TINKERHOME/bin:$PATH
 # This assumes that BAR-amber and BAR-tinker are in the
 # same directory as this analysis script.
-export PATH="`pwd`"
+export PATH="`pwd`":$PATH
 
 # Run BAR analysis on all simulations.  This is fairly quick
 # compared to the energy analysis so it is done in "serial". 

@@ -7,7 +7,7 @@ export TINKERHOME=/work/02555/psn/tinker
 export PATH=$TINKERHOME/bin:$PATH
 # This assumes that BAR-amber and BAR-tinker are in the
 # same directory as this analysis script.
-export PATH="`pwd`"
+export PATH="`pwd`":$PATH
 
 # The main purpose of this script is to extract energies from all
 # of the MD simulations. We have assumed a system with ~16 CPU
@@ -17,73 +17,73 @@ export PATH="`pwd`"
 # (1) extract gas phase energies
 for j in 1.0 0.9 0.8 0.7
 do
- cd ./intra/ele"$j"
+ cd intra/ele"$j"
  mv ele"$j" ele"$j".arc
  ./ana &
  echo "intra $j"
- cd ../../
+ cd ../..
 done
 wait
 for j in 0.6 0.5 0.4 0.3
 do
- cd ./intra/ele"$j"
+ cd intra/ele"$j"
  mv ele"$j" ele"$j".arc
  ./ana &
  echo "intra $j"
- cd ../../
+ cd ../..
 done
 wait
 for j in 0.2 0.1 0.0
 do
- cd ./intra/ele"$j"
+ cd intra/ele"$j"
  mv ele"$j" ele"$j".arc
  ./ana &
  echo "intra $j"
- cd ../../
+ cd ../..
 done
 wait
 
 # (2) extract electrostatic energies
 for j in 1.0 0.9 0.8 0.7
 do
- cd ./ele"$j"/eng
+ cd ele"$j"/eng
  ./run &
  echo "elec $j"
- cd ../../
+ cd ../..
 done
 wait
 for j in 0.6 0.5 0.4 0.3
 do
- cd ./ele"$j"/eng
+ cd ele"$j"/eng
  ./run &
  echo "elec $j"
- cd ../../
+ cd ../..
 done
 wait
 for j in 0.2 0.1 0.0
 do
- cd ./ele"$j"/eng
+ cd ele"$j"/eng
  ./run &
  echo "elec $j"
- cd ../../
+ cd ../..
 done
 wait
 
 # (3) extract vdW energies
 for j in 0.9 0.8 0.75 0.7 0.65
 do
- cd ./vdw"$j"/eng
+ cd vdw"$j"/eng
  ./run &
  echo "vdw $j"
- cd ../../
+ cd ../..
 done
 wait
 for j in 0.6 0.5 0.4 0.2 0.0
 do
- cd ./vdw"$j"/eng
+ cd vdw"$j"/eng
  ./run &
  echo "vdw $j"
- cd ../../
+ cd ../..
 done
 wait
 
