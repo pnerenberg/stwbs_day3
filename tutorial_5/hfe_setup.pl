@@ -365,7 +365,7 @@ for ($i=0;$i<=$#steps;$i++)
             open MIN_RUN, ">$steps[$i]/eng/run";
 	    print MIN_RUN qq(sander -O -i $steps[$i].min -c ../$steps[$i].inpcrd -y ../$steps[$i].mdcrd -p ../$steps[$i].prmtop -o $steps[$i]$steps[$i].e &\n);
 	    if ($i > 0){
-	    	print MIN_RUN qq(sander -O -i $steps[$i].min -c ../$steps[$i].inpcrd -y ../$steps[$i].mdcrd -p ../../$steps[$i-1]/$steps[$i-1].prmtop -o $steps[$i]$steps[$i-1].e \n);
+	    	print MIN_RUN qq(sander -O -i $steps[$i].min -c ../$steps[$i].inpcrd -y ../$steps[$i].mdcrd -p ../../$steps[$i-1]/$steps[$i-1].prmtop -o $steps[$i]$steps[$i-1].e &\n);
 	    }
 	    if ($steps[$i] eq "ele0.0"){
 	    	print MIN_RUN qq(sander -O -i $steps[$i+1].min -c ../$steps[$i].inpcrd -y ../$steps[$i].mdcrd -p ../../$steps[$i+1]/$steps[$i+1].prmtop -o $steps[$i]$steps[$i+1].e \n);
