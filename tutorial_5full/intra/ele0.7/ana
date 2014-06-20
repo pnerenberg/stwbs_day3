@@ -1,0 +1,3 @@
+analyze ele0.7.arc e -k ele0.7.key > ele0.7ele0.7.e
+analyze ele0.7.arc e -k ele0.8.key > ele0.7ele0.8.e
+analyze ele0.7.arc e -k ele0.6.key > ele0.7ele0.6.e

@@ -1,0 +1,3 @@
+sander -O -i vdw0.5.min -c ../vdw0.5.inpcrd -y ../vdw0.5.mdcrd -p ../vdw0.5.prmtop -o vdw0.5vdw0.5.e &
+sander -O -i vdw0.6.min -c ../vdw0.5.inpcrd -y ../vdw0.5.mdcrd -p ../vdw0.5.prmtop -o vdw0.5vdw0.6.e &
+sander -O -i vdw0.4.min -c ../vdw0.5.inpcrd -y ../vdw0.5.mdcrd -p ../vdw0.5.prmtop -o vdw0.5vdw0.4.e 

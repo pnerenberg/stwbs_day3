@@ -1,0 +1,150 @@
+#!/usr/bin/perl 
+
+#This program is for analyzing the free energy change of 
+#perturbation of a MD simulation using Bennet Acceptance Ratio.
+#This program requires two energy output files for two frame sets from AMBER, totally four.
+
+
+#energy file with first trajectory and first prm file
+$file00=$ARGV[0];
+#energy file with first trajectory and second prm file
+$file01=$ARGV[1];
+#energy file with second trajectory and first prm file
+$file10=$ARGV[2];
+#energy file with second trajectory and second prm file
+$file11=$ARGV[3];
+
+
+$firstframe=$ARGV[4];
+$lastframe=$ARGV[5];
+
+#initial constant for iteration
+$C=$ARGV[6];
+
+open(NRG,$file00);
+@line00=<NRG>;
+close(NRG);
+
+open(NRG,$file01);
+@line01=<NRG>;
+close(NRG);
+
+open(NRG,$file10);
+@line10=<NRG>;
+close(NRG);
+
+open(NRG,$file11);
+@line11=<NRG>;
+close(NRG);
+
+#constants in kcal/mol
+$R=.001987;
+$T=298.15;
+
+#compute avg exp terms, uses analysis subroutine
+$RT=$R*$T;
+$framenumber=$firstframe;
+while($framenumber<=$lastframe)
+{
+
+	$u00[$framenumber]= &nrg(\@line00,$framenumber);
+	$u01[$framenumber]= &nrg(\@line01,$framenumber);
+	$u10[$framenumber]= &nrg(\@line10,$framenumber);
+	$u11[$framenumber]= &nrg(\@line11,$framenumber);
+	if($u00[$framenumber]=~/end/){
+		print "\nError 00: Trajectory overflow!\n";
+		exit;
+	}
+	if($u01[$framenumber]=~/end/){
+		print "\nError 01: Trajectory overflow!\n";
+		exit;
+	}
+	if($u10[$framenumber]=~/end/){
+		print "\nError 10: Trajectory overflow!\n";
+		exit;
+	}
+	if($u11[$framenumber]=~/end/){
+		print "\nError 11: Trajectory overflow!\n";
+		exit;
+	}
+	$framenumber+=1;
+        #print "$framenumber, $u00[$framenumber]\n";
+}
+#print "$framenumber $lastframe\n";
+#if($framenumber/=$lastframe+1){
+#   print "Error: Trajectory overflow!\n";
+#   exit;
+#} 
+
+	
+$framenumber=$firstframe;
+$old=$C;
+$new=&loop($old);
+$diff=abs($new-$old);
+while($diff >= 0.01) {
+	$old=$new;
+	$new=&loop($old);
+	$diff=abs($new-$old);
+	$bailout+=1;
+	if($bailout==100){
+		print "The simulation completed 100 iterations without converging.\n";
+		system "time";
+			 }
+	}
+print "Result   $new\n";
+
+sub loop {
+	$framenumber=$firstframe;
+	$num=0; 
+	$denom=0;
+	while($framenumber<=$lastframe)
+	{
+		$num+=1/(1+exp(($u10[$framenumber]-$u11[$framenumber]+$_[0])/$RT));
+	
+		$denom+=1/(1+exp(($u01[$framenumber]-$u00[$framenumber]-$_[0])/$RT)); 
+	
+		$framenumber+=1;
+	}
+
+	$dA=$RT*log($num/$denom)+$_[0];
+	print "dA $dA\n";
+	return $dA;	
+	}
+	
+	
+#free energy data extraction subroutine invokes tinker/analyze.x
+sub nrg(\@$)
+{
+        ($a,$b)=@_;
+	#$b=space($b);
+        if($b<10) {$b="               ".$b;}
+        elsif($b<100)
+        {        $b="              ".$b;}
+        elsif($b<1000)
+        {        $b="             ".$b;}
+        elsif($b<10000)
+        {        $b="            ".$b;}
+        $keyword="Analysis for Archive Structure :".$b;
+        @line=@$a;
+        for($i=0;$i<=$#line;$i++)
+        {
+                if($line[$i]=~/$keyword/)
+                {
+                        #print"$line[$i]\n";
+			$sum=0;
+			$j=$i+1;
+			while(!($line[$j]=~/Total Potential Energy/))
+			{$j=$j+1;}
+			#print"line $line[$j]\n";
+			@eng=();
+                        @eng=split/\s+/,$line[$j];
+			$sum += $eng[5];
+			return $sum;
+                }
+        }
+	$sum="end";
+	return $sum;
+}
+
+
+	

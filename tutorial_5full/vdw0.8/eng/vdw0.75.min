@@ -1,0 +1,22 @@
+NPT production 600 ps
+ &cntrl
+  imin=5, ntmin=2, maxcyc=1, irest=1, ntx=5,
+  ntb=2, cut=9.0, iamoeba=1,
+  ntf=1, ntc=1,
+  ntt=3, temp0=298.15, gamma_ln=1.0, ig=-1,
+  ntp=1, pres0=1.013, taup=1.0,
+  nstlim=600000, dt=0.001,
+  ntpr=1, ntwr=0, ntwx=0,
+  ioutfm=1, iwrap=1, 
+ /
+ &ewald
+  order=5, ew_coeff=0.45,
+ /
+ &amoeba
+  ee_dsum_cut=7.0, dipole_scf_tol = 0.00001, amoeba_verbose=0,
+  dipole_scf_iter_max=50, do_vdw_longrange=1, do_vdw_taper=1,
+  sor_coefficient=0.7,
+  soft_lambda=0.75, soft_alpha=0.7, soft_expo=5,
+  vdw_longrange_lambda=0.75,
+ /
+/

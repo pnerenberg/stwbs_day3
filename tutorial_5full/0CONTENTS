@@ -1,0 +1,32 @@
+###############################################################################
+
+Contents of the HFE_tutorial directory
+
+###############################################################################
+
+amoeba_l04.prm        # Tinker parameters for ligand and Amoeba water
+BAR-amber             # BAR analysis script from Amber mdout files
+bar_analysis.sh       # Script to automate analysis after energy extraction
+BAR-tinker            # BAR analysis script from Tinker analyze out files
+                      # (superceded by 'bar' program in Tinker 6.3)
+box_30_equil.xyz      # Pre-equilibrated 30A box of Amoeba waters
+extract_energies.sh   # Extracts energies from production simulations
+getresult.sh          # Extracts and collates final BAR results for each step
+hfe_setup.in          # Input file for hfe_setup.pl
+hfe_setup.pl          # Creates folders and required input files for each 
+                      # lambda window; also creates folder and moves files
+                      # for "start" simulation
+l04_eq1.in            # Amber NVT heating input --> to start/
+l04_eq2.in            # Amber NPT equilibration input --> to start/
+l04_template.in       # Template production input file for hfe_setup.pl
+l04_in.xyz            # Tinker xyz of Geraniol (in vacuum - this should NOT
+                      # contain any periodic box dimensions)
+l04_min.in            # Amber minimisation input --> to start/
+restart_copy.sh       # Copies equilibrated rst file from "start" to be input 
+                      # coordinates for production simulations
+run_firstsim.sh       # Script to run "start" simulation --> to start/
+setup_elesims.sh      # Automatic setup of queue submission scripts to run
+                      # electrostatic simulations
+setup_vdwsims.sh      # Same as above, but for vdW simulations
+
+

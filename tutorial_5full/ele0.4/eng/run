@@ -1,0 +1,3 @@
+sander -O -i ele0.4.min -c ../ele0.4.inpcrd -y ../ele0.4.mdcrd -p ../ele0.4.prmtop -o ele0.4ele0.4.e &
+sander -O -i ele0.4.min -c ../ele0.4.inpcrd -y ../ele0.4.mdcrd -p ../../ele0.5/ele0.5.prmtop -o ele0.4ele0.5.e 
+sander -O -i ele0.4.min -c ../ele0.4.inpcrd -y ../ele0.4.mdcrd -p ../../ele0.3/ele0.3.prmtop -o ele0.4ele0.3.e 

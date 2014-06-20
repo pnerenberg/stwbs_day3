@@ -1,0 +1,5 @@
+BAR-amber vdw0.75vdw0.75.e vdw0.75vdw0.7.e ../../vdw0.7/eng/vdw0.7vdw0.75.e ../../vdw0.7/eng/vdw0.7vdw0.7.e 100 200 5 >> vdw0.75-vdw0.7
+BAR-amber vdw0.75vdw0.75.e vdw0.75vdw0.7.e ../../vdw0.7/eng/vdw0.7vdw0.75.e ../../vdw0.7/eng/vdw0.7vdw0.7.e 100 300 5 >> vdw0.75-vdw0.7
+BAR-amber vdw0.75vdw0.75.e vdw0.75vdw0.7.e ../../vdw0.7/eng/vdw0.7vdw0.75.e ../../vdw0.7/eng/vdw0.7vdw0.7.e 100 400 5 >> vdw0.75-vdw0.7
+BAR-amber vdw0.75vdw0.75.e vdw0.75vdw0.7.e ../../vdw0.7/eng/vdw0.7vdw0.75.e ../../vdw0.7/eng/vdw0.7vdw0.7.e 100 500 5 >> vdw0.75-vdw0.7
+BAR-amber vdw0.75vdw0.75.e vdw0.75vdw0.7.e ../../vdw0.7/eng/vdw0.7vdw0.75.e ../../vdw0.7/eng/vdw0.7vdw0.7.e 100 600 5 >> vdw0.75-vdw0.7

@@ -1,0 +1,50 @@
+################################################################################
+
+This folder contains example inputs designed to calculate small molecule
+hydration free energies with Amber14 and TINKER 7.0.
+
+Tinker 7.0 requires the use of the tinker_to_amber conversion program
+available with Ambertools 14. Earlier versions of tinker_to_amber will
+not work with xyz files containing box dimensions.
+
+WE also include scripts designed to aid the setup and analysis of these
+calculations (e.g. automated production of parameter files at defined
+lambda windows, scripts to perform BAR analysis of Amber & Tinker outputs prior
+to version 6.3), but these are adapted from those publicly available on the
+Pengyu Ren group website:
+
+http://biomol.bme.utexas.edu/wiki/index.php/Research_ex:Amber#HFE_Automation
+
+Please acknowledge appropriately!
+
+Richard Bradshaw and Paul Nerenberg
+
+################################################################################
+
+1) PROTOCOL
+
+The overall protocol is similar to that defined in Y.Shi et al., "Multipole
+Electrostatics in Hydration Free Energy Calculations", J. Comput. Chem.,2010,
+32,5,967-977. The thermodynamic cycle in use requires three sets of calculations:
+
+i) Discharging of solute in solution ("ele")
+ii) Decoupling of vdW interactions between solute & environment in solution ("vdw")
+iii) Discharging of solute in vacuum ("intra")
+
+Free energy changes across each window are evaluated by BAR and summed to give
+a total dG for each step. The overall dG(hyd) is then given by:
+
+dG(hyd) = dG(intra) - dG(ele) - dG(vdw)
+
+2) EXAMPLE
+
+The input files here perform a HFE for the small molecule Geraniol. AMOEBA
+parameters were produced using the Poltype 1.1.2 program in its standard form.
+
+We use Amber for the simulations in solution, and TINKER for those in vacuum,
+just for speed. If you wish to do the same, please check both packages give
+the same energies given the same inputs.
+
+3) FILES
+
+Contents and instructions are available in separate readme files.

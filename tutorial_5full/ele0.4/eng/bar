@@ -1,0 +1,5 @@
+BAR-amber ele0.4ele0.4.e ele0.4ele0.3.e ../../ele0.3/eng/ele0.3ele0.4.e ../../ele0.3/eng/ele0.3ele0.3.e 100 200 5 >> ele0.4-ele0.3
+BAR-amber ele0.4ele0.4.e ele0.4ele0.3.e ../../ele0.3/eng/ele0.3ele0.4.e ../../ele0.3/eng/ele0.3ele0.3.e 100 300 5 >> ele0.4-ele0.3
+BAR-amber ele0.4ele0.4.e ele0.4ele0.3.e ../../ele0.3/eng/ele0.3ele0.4.e ../../ele0.3/eng/ele0.3ele0.3.e 100 400 5 >> ele0.4-ele0.3
+BAR-amber ele0.4ele0.4.e ele0.4ele0.3.e ../../ele0.3/eng/ele0.3ele0.4.e ../../ele0.3/eng/ele0.3ele0.3.e 100 500 5 >> ele0.4-ele0.3
+BAR-amber ele0.4ele0.4.e ele0.4ele0.3.e ../../ele0.3/eng/ele0.3ele0.4.e ../../ele0.3/eng/ele0.3ele0.3.e 100 600 5 >> ele0.4-ele0.3

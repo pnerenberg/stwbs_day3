@@ -1,0 +1,44 @@
+################################################################################
+
+Instructions to run HFE of Geraniol
+
+Notes ***particularly on the use of pmemd.amoeba*** and accreditations for 
+some of these scripts are available in the Readme
+
+################################################################################
+
+1) Ensure $AMBERHOME/bin, $TINKERHOME/bin, BAR-amber and BAR-tinker are in your 
+PATH.
+
+2) Run hfe_setup.pl < hfe_setup.in
+Adaptations to lambda window spacing etc. can be made in hfe_setup.in - if you
+want to see the meanings of each line simply run hfe_setup.pl without any
+arguments for interactive input.
+
+Briefly, the script will take a TINKER xyz of the ligand, soak it in a box of
+AMOEBA water, run tinker_to_amber to convert TINKER parameters and coordinates
+to Amber prmtop and inpcrd, repeat the same for each lambda window, and finally
+create inputs for analysis of results with BAR-amber and BAR-tinker.
+
+3) Minimise and equilibrate the resulting Amber inpcrd as normal. This file and
+the required input files are automatically moved to a directory called "start".
+Copy the final equilibrated structure into each of the lambda window folders 
+with restart_copy.sh.
+
+4) Perform the simulations. This can be automated using the setup_elesims.sh
+and setup_vdwsims.sh. Adapt these to your own cluster's environment. We also
+do not include a script to automate the running of the TINKER gas phase 
+simulations. Currently the BAR analysis assumes that the gas phase simulations
+have the same length and frequency of trajectory output as the condensed phase
+simulations. Try to construct a script that automates the running of these
+simulations!
+
+5) Perform the energy extraction and analysis. Each lambda window has the 
+required files, but we include scripts that automate this procedure.
+
+6) BAR free energies for each step are summarised in ele_pasted.txt, vdw_pasted.txt
+and intra_pasted.txt. Each column represents a lambda window from 1.0 to 0.0,
+each row corresponds to the cumulative dG at 100 ps intervals. The first 100 ps
+are discarded as equilibration, hence the first line = dG after 200 ps.
+
+The overall dG(hyd) = dG(intra) - dG(ele) - dG(vdw).

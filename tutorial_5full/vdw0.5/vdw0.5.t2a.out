@@ -1,0 +1,26 @@
+ frcfieldfile = 
+ ./vdw0.5.prm                                                                   
+  
+ found a-axis =    30.0000000000000     
+ num_xyz_atoms =         2006
+ numres =          660
+ num_atoms =         2006
+ vdw: num_vdw_types =            9
+ num_bonds =         1346
+ num_urey_bradley =          659
+ num_tot_angles =          708
+ num regular, trigonal angles =          708           0
+ no success finding Out-of-Plane Bends
+ numtor =           56
+ num1,num_torsions =           34          42
+ no success finding Stretch-Torsions
+ no success finding Pi-Orbital Torsions
+ num_stretch_bends =           29
+ no success finding Torsion-Torsions
+ num_molecules =          660
+ num_multipoles =         2006
+ number of frame def list =         4672
+ num_12 =         1346
+ num_13 =          708
+ num_14 =           56
+ num_15 =           68
